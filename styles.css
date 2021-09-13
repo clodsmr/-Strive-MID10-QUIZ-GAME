@@ -22,13 +22,19 @@ h1 {
     font-size: x-large;
     font-weight: bold;
     color: white;
+    font-size: 30px;
 }
 
 .radioButton {
 
     background-color: white;
-    width: 10%;
-    font-size: 20px;
     text-align: center;
+
+}
+
+.labels {
+
+    font-size: 25px;
+    color :lightblue
 
 }

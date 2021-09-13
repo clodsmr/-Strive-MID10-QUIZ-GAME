@@ -1,4 +1,4 @@
-let userScore = 0
+
 
 
 //if questionNumber>questions.lenght--->showScore() 
@@ -7,9 +7,9 @@ let userScore = 0
 
 const arrQuestions = [ 
     {
-        question:"Which Renaissance scientist is credited with the discovery of the pendulum?",
-        answers: [  "aa", "Galielo Galilei", "cc" ],
-        corret_answer: "1"
+        question:"Which scientist is credited with the discovery of the pendulum?",
+        answers: [  "Albert Einstein", "Galielo Galilei", "Joannes Kepler" ],
+        corret_answer: 2,
 
     },   
  
@@ -17,42 +17,42 @@ const arrQuestions = [
         question:"What is the name of Isaac Newton's three extremely important laws? ",
 
         answers: [
-             "aa",
+             "Kepler's laws",
              "Law of motion",
-             "cc",
+             "Gravitational laws",
     ],
-        corret_answer: "1" ,
+        corret_answer: 2 ,
     },
     {
         question:"Can you name the tube used to produce X-rays?",
         answers: [
-             "aa",
+             "X-rays tube",
              "Coolidge tube",
-             "cc",
+             "Cathod-ray tube",
         ],
-        corret_answer:"1" ,
+        corret_answer: 2 ,
     },
     {
         question:"What is a word used to describe a solid whose arrangement of atoms and molecules has no definite pattern?",
 
      
         answers:  [
-             "aa",
+             "Liquid",
              "Amorphous",
-             "cc",
+             "Crystal",
         ],
-        corret_answer:"1" ,
+        corret_answer: 2 ,
     }, 
     {
         question:"For what discovery did Albert Einstein win his first Nobel prize?",
 
      
         answers:  [
-             "aa",
+            {text: "Black Body radiation", correct: true}
              "Photoelettric effect",
-             "cc",
+             "General Relativity",
         ],
-        corret_answer:"1" ,
+        corret_answer: 2 ,
     }
 ]
 
@@ -64,12 +64,12 @@ for (k=0 ; k<arrQuestions.length; k++){
 
 }
 
-let questionNumber = []
+/*let questionNumber = []
 
 for (let questions=0; questions<arrQuestions.length; questions++) {
        questionNumber.push(arrQuestions[questions].question)
 
-}
+}*/
 
 
 //creo le div in cui inserire le domande per ogni domanda dell'array e gliele metto
@@ -77,7 +77,7 @@ for (let questions=0; questions<arrQuestions.length; questions++) {
 const showingQuestions = function(){
 
     let quizNode = document.getElementById("quizContainer")
-   
+    let buttonsArray = []
     
     for (let i=0; i<arrQuestions.length; i++){
 
@@ -94,6 +94,7 @@ const showingQuestions = function(){
 
 //radio buttons per risposte
          
+    
 
          for (let j=0; j<3; j++){
             let radioButtonNode = document.createElement("input");
@@ -105,11 +106,12 @@ const showingQuestions = function(){
 
             let radioButtonLabel = document.createElement('label')
             radioButtonLabel.htmlFor = `q${i}${j}`
+            radioButtonLabel.classList.add("labels")
 
             let answerNode = document.createTextNode(`${arrQuestions[i].answers[j]}`)
             radioButtonLabel.appendChild(answerNode)
 
-            
+            buttonsArray.push(radioButtonNode)
 
 
             questionNode.appendChild(radioButtonNode)
@@ -123,16 +125,34 @@ const showingQuestions = function(){
   }
 
 }
-
+// array di bottoni: ogni bottone ha eventListener onclick, funzione. 
+// funzione : (if id del bottone ij = i:currentquestion e j=risposta corretta =rightAnswers[i]) allore score+=1
+// else score
 
 let showScore = function () {
 
-    let selectedButton = document.querySelector('radioButton').checked 
-
-    for (questions of questionNumber){
-
-    }
+    let buttons = document.querySelector('radioButton')
+        
+        for (let question=0; question<6; question++)
     
+        // handle button click
+        buttons.onclick = function () {
+            const rbs = document.querySelectorAll('input[name="question 1"]');
+            let selectedValue;
+            for (const rb of rbs) {
+                if (rb.checked) {
+                    selectedValue = rb.value;
+                    break;
+                }
+            }
+            alert(selectedValue);
+        };
+
+    
+}
+
+let rightAnswer = function() {
+
     
 }
 
